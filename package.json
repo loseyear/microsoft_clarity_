@@ -11,6 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.1.0",
+    "clarity-decode": "^0.6.28",
+    "clarity-js": "^0.6.28",
+    "clarity-visualize": "^0.6.28",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-router": "^10.1.1"

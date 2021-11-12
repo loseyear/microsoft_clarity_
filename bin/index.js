@@ -2,16 +2,15 @@ const Koa = require('koa')
 const bodyParser = require('koa-body')
 const cors = require('@koa/cors')
 
-const route = require('./serve/route')
+const route = require('../serve/route')
+const render = require('../library/render')
 
 const app = new Koa()
 
 app.use(
-  cors(
-    {
-      'Access-Control-Allow-Origin': '172.16.16.67:8080',
-    },
-  ),
+  cors({
+    'Access-Control-Allow-Credentials': true,
+  }),
 )
 app.use(
   bodyParser({
@@ -20,7 +19,6 @@ app.use(
   }),
 )
 
+app.use(async (ctx, next) => ctx.path.match(/^\/api/) ? await route()(ctx, next) : await render(ctx, next))
 
-app.use(async (ctx, next) => await route()(ctx, next))
-
-app.listen(3000)
+app.listen(9527)
