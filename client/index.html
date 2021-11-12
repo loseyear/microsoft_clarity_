@@ -1,0 +1,65 @@
+<script type="text/javascript">
+  (
+    function(
+      c, // window
+      l, // document
+      a, // clarity
+      r, // script
+      i, // 96km7rtanm
+      t, // undefined
+      y, // undefined
+    ){
+
+      // window['clarity'] 添加函数
+        if (c[a]) {
+          c[a] = c[a]
+        } else {
+          c[a] = function() { (c[a].q = c[a].q || []).push(arguments) }
+        }
+      t=l.createElement(r);
+      t.async=1;
+      t.src="https://www.clarity.ms/tag/"+i;   // <script async src="https:\/\/www.clarity.ms/tag/96km7rtanm"><\/script>
+      // y=l.getElementsByTagName(r)[0]; // 当前函数
+      // y.parentNode.insertBefore(t,y); // y 前面添加 t
+    }
+  )(window, document, "clarity", "script", "9a1ogyrdyu");
+</script>
+
+<script>
+// https://www.clarity.ms/tag/96km7rtanm
+!
+function(
+  c, // clarity
+  l, // document
+  a, // window
+  r, // script
+  i, // {}
+  t, // <script async="" src="https://d.clarity.ms/s/0.6.27/clarity.js"><\/script>
+  y, // this
+) {
+  if (a[c].v || a[c].t) return a[c]("event", c, "dup." + i.projectId);
+  a[c].t = !0,
+  (t = l.createElement(r)).async = !0,
+  t.src = "https://d.clarity.ms/s/0.6.27/clarity.js",
+  (y = l.getElementsByTagName(r)[0]).parentNode.insertBefore(t, y),
+  a[c]("start", i),
+  a[c].q.unshift(a[c].q.pop())
+} (
+    "clarity",
+    document,
+    window,
+    "script",
+    {
+      "projectId": "9a1ogyrdyu",
+      "upload": "http://127.0.0.1:3000/api/collect",
+      // "upload": "https://d.clarity.ms/collect",
+      "expire": 365,
+      "cookies": ["_uetmsclkid", "_uetvid"],
+      "track": true,
+      "lean": false,
+      // "fallback": "https://www.clarity.ms/eus/collect",
+      "fallback": "http://127.0.0.1:3000/api/collect",
+      "content": true
+    },
+);
+</script>
