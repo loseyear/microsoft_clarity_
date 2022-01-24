@@ -3,15 +3,16 @@ const bodyParser = require('koa-body')
 const cors = require('@koa/cors')
 
 const route = require('../serve/route')
-const render = require('../library/render')
+const sql = require('../library/sql')
 
 const app = new Koa()
 
 app.use(
   cors({
-    'Access-Control-Allow-Credentials': true,
+    credentials: true,
   }),
 )
+
 app.use(
   bodyParser({
     multipart: true,
@@ -19,6 +20,7 @@ app.use(
   }),
 )
 
-app.use(async (ctx, next) => ctx.path.match(/^\/api/) ? await route()(ctx, next) : await render(ctx, next))
+app.use(async (ctx, next) => sql(ctx, next, app))
+app.use(async (ctx, next) => await route()(ctx, next))
 
 app.listen(9527)

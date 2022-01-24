@@ -16,6 +16,12 @@
     "clarity-visualize": "^0.6.28",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
-    "koa-router": "^10.1.1"
+    "koa-cors": "^0.0.16",
+    "koa-router": "^10.1.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.9.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

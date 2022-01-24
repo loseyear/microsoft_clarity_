@@ -1,5 +1,4 @@
 const { decode } = require('clarity-decode')
-// const { Visualizer } = require('../../library/clarity.visualize')
 
 const test = async (ctx) => {
   try {
@@ -10,11 +9,32 @@ const test = async (ctx) => {
   }
 }
 
-const collect = async (ctx) => {
+const getCollect = async (ctx) => {
   try {
+    const rst = await ctx.sql.track.findAll({
+      attributes: ['userid', 'username', 'timestamp', 'data'],
+    })
+    ctx.body = rst
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const postCollect = async (ctx) => {
+  try {
+    console.log(ctx.request.body)
     const data = ctx.request.body
-    const format = Object.keys(data).length ? decode(data) : {}
-    console.log(format)
+    if (!Object.keys(data).length) {
+      ctx.status = 200
+      return
+    }
+    const format = decode(data)
+    await ctx.sql.track.create({
+      userid: format.envelope.userId,
+      username: ctx.cookies.get('username'),
+      timestamp: format.timestamp,
+      data: JSON.stringify(format),
+    })
     ctx.status = 200
   } catch (e) {
     console.log(e)
@@ -23,6 +43,6 @@ const collect = async (ctx) => {
 
 
 module.exports = {
-  'GET /test': test,
-  'POST /collect': collect,
+  'GET /collect': getCollect,
+  'POST /collect': postCollect,
 }

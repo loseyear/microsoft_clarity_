@@ -1,0 +1,6 @@
+{
+  "watch": ["bin", "library", "script", "serve", "config"],
+  "ext": "ts,tsx",
+  "ignore": ["serve/**/*.spec.ts"],
+  "exec": "cross-env MYSQL=prod node ./bin/index.js"
+}
